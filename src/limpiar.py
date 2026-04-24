@@ -11,8 +11,6 @@ def cargar_datos(ruta):
 
 # eliminar nulos
 def limpiar_nulos(df):
-    print("Valores nulos por columna:")
-    print(df.isnull().sum())
     df = df.dropna()
     return df
 
@@ -26,7 +24,9 @@ def limpiar_texto(df, columnas):
 # limpiar moneda
 def limpiar_monto(df, columna):
     if columna in df.columns:
-        df[columna] = df[columna].str.replace("$", "")
-        df[columna] = df[columna].str.replace(",", "")
-        df[columna] = df[columna].astype(float)
+        try:
+            df[columna] = df[columna].astype(float)
+        except:
+            # Si hay strings, limpiar
+            df[columna] = df[columna].str.replace("$", "").str.replace(",", "").astype(float)
     return df
