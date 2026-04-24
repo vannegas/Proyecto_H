@@ -23,11 +23,11 @@ def menu():
             print(df)
 
         elif opcion == "2":
-            total = df["gastos"].sum()
+            total = df["monto"].sum()
             print("Total gastado:", total)
 
         elif opcion == "3":
-            promedio = df["gastos"].mean()
+            promedio = df["monto"].mean()
             print("Promedio de gastos:", promedio)
 
         elif opcion == "4":
